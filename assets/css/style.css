@@ -1,0 +1,164 @@
+/* imports */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+:root {
+  --primary-color: #b6d1ff;
+  --bg-primary: #3a4343;
+  --gradient-color: linear-gradient(
+    180deg,
+    hsla(0, 0%, 12%, 0.4) 50%,
+    #1f1f1f 100%
+  );
+}
+
+/* Resets */
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url("../img/images/rain_bck.jpeg") no-repeat center center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  margin: 0 auto;
+  background: rgb(217, 217, 217, 0.4);
+  max-width: 75rem;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Input */
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ebe4d1;
+  border-radius: 0.5rem;
+  height: 2.5625rem;
+}
+
+.search .search-input {
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  border: 2px solid var(--bg-primary);
+  border-right: none !important;
+  background: var(--bg-primary);
+  color: var(--primary-color);
+  padding: 4px 0 4px 16px;
+  outline: none;
+  border-radius: 8px 0 0 8px;
+  height: 41px;
+  width: 100%;
+}
+
+.search .search-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  border-radius: 0 8px 8px 0;
+  background: var(--bg-primary);
+  outline: none;
+  cursor: pointer;
+  border: 2px solid var(--bg-primary);
+  border-left: none !important;
+  padding: 4px 8px 4px 12px;
+  height: 41px;
+  line-height: 1;
+}
+
+.search .search-input:focus,
+.search-input:focus + .search-button {
+  border-color: var(--primary-color);
+  transition: border 0.3s;
+}
+
+/* Day Infor header */
+
+.day-infor {
+  background: var(--gradient-color),
+    url("../img/images/rain_bck.jpeg") center center no-repeat;
+  background-size: cover;
+  color: #fff;
+  border-radius: 0.5rem;
+  width: 400px;
+}
+
+.day-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.day-header .date {
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-bottom: 3.75rem;
+}
+
+.day-header .temp {
+  font-size: 6rem;
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 10px;
+}
+
+.day-header .city {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  gap: 0.25rem;
+  margin-bottom: 10px;
+  font-weight: 400;
+  font-size: 1.25rem;
+}
+
+.day-header .city::before {
+  content: "";
+  background: url("../img/icons/general/local_icon.svg") no-repeat center center;
+  position: absolute;
+  height: 1rem;
+  width: 1rem;
+  display: block;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.day-header .state {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 2.75rem;
+}
+
+.day-header .min-max {
+  display: flex;
+  gap: 0.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+}
