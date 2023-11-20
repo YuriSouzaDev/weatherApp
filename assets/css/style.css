@@ -131,6 +131,14 @@ body {
   padding-bottom: 0;
 }
 
+.temp-infor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .day-header .date {
   font-size: 0.75rem;
   font-weight: 500;
@@ -149,7 +157,7 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
-  gap: 0.25rem;
+  margin: 0 auto;
   margin-bottom: 10px;
   font-weight: 400;
   font-size: 1.25rem;
@@ -167,7 +175,7 @@ body {
   transform: translateY(-50%);
 }
 
-.day-header .state {
+.day-header .country {
   font-size: 1rem;
   font-weight: 400;
   margin-bottom: 2.75rem;

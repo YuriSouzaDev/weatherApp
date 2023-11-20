@@ -12,11 +12,15 @@ async function handleSubmit(e) {
   try {
     const response = await fetch(
       // `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${inputCity}&days=7`
-      "http://api.weatherapi.com/v1/forecast.json?key=b25cdbec0d224f2a975190533231611&q=london&days=7"
+      "http://api.weatherapi.com/v1/forecast.json?key=b25cdbec0d224f2a975190533231611&q=germany&days=7"
     );
     const json = await response.json();
     console.log(json);
     changeDate(json);
+    changeCelciusActual(json);
+    changeLocation(json);
+    changeCountry(json);
+    changeMinMax(json);
   } catch (error) {
     console.log(error);
   }
@@ -77,7 +81,37 @@ function changeDate(json) {
   const date = `${dayOfWeek} ${month} ${dayOfMonth} ${year}`;
   const time = `${hours}:${minutes} ${timePeriod}`;
 
-  return (dateFromHTML.innerHTML = `${date} | ${time}`);
+  dateFromHTML.innerHTML = `${date} | ${time}`;
+}
+
+// change the celcius from location in day
+function changeCelciusActual(json) {
+  const tempFromHtml = document.querySelector(".temp");
+  const temp = json.current.temp_c;
+  tempFromHtml.innerHTML = `${temp}°`;
+}
+
+function changeLocation(json) {
+  const cityFromHtml = document.querySelector(".city");
+  const city = json.location.name;
+  cityFromHtml.innerHTML = `${city}`;
+}
+
+function changeCountry(json) {
+  const countryFromHtml = document.querySelector(".country");
+  const country = json.location.country;
+  countryFromHtml.innerHTML = `${country}`;
+}
+
+function changeMinMax(json) {
+  const minFromHtml = document.querySelector(".min");
+  const maxFromHtml = document.querySelector(".max");
+
+  const min = json.forecast.forecastday[0].day.mintemp_c;
+  const max = json.forecast.forecastday[0].day.maxtemp_c;
+
+  minFromHtml.innerHTML = `Min: ${min}°`;
+  maxFromHtml.innerHTML = `Max: ${max}°`;
 }
 
 searchForm.addEventListener("submit", handleSubmit);
