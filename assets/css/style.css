@@ -2,6 +2,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 
+@font-face {
+  font-family: "EuroStyle Normal";
+  font-style: normal;
+  font-weight: normal;
+  src: local("EuroStyle Normal"),
+    url("../font/EuroStyleNormal.woff") format("woff");
+}
+
+@font-face {
+  font-family: "ModernaUnicase Condensed";
+  font-style: normal;
+  font-weight: 500;
+  src: local("EuroStyle Normal"),
+    url("../font/modernaunicase-condensed-medium.otf") format("otf");
+}
+
 :root {
   --primary-color: #b6d1ff;
   --bg-primary: #3a4343;
@@ -112,6 +128,7 @@ body {
   font-family: "Montserrat", sans-serif;
   padding: 1.25rem;
   text-align: center;
+  padding-bottom: 0;
 }
 
 .day-header .date {
@@ -161,4 +178,38 @@ body {
   gap: 0.5rem;
   font-weight: 500;
   font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Day Infor footer */
+.day-footer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 1.25rem;
+  gap: 1.25rem;
+  padding-top: 0;
+}
+
+.day-footer > div {
+  background: #00000066;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  width: 170px;
+  height: 148px;
+}
+
+.day-footer h2 {
+  color: var(--primary-color);
+  font-weight: 400;
+  font-family: "EuroStyle Normal", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.day-footer p {
+  font-family: "ModernaUnicase Condensed", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 2.5rem;
 }
