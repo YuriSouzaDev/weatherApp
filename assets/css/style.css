@@ -1,21 +1,21 @@
 /* imports */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 @font-face {
-  font-family: "EuroStyle Normal";
+  font-family: 'EuroStyle Normal';
   font-style: normal;
   font-weight: normal;
-  src: local("EuroStyle Normal"),
-    url("../font/EuroStyleNormal.woff") format("woff");
+  src: local('EuroStyle Normal'),
+    url('../font/EuroStyleNormal.woff') format('woff');
 }
 
 @font-face {
-  font-family: "ModernaUnicase Condensed";
+  font-family: 'ModernaUnicase Condensed';
   font-style: normal;
   font-weight: 500;
-  src: local("EuroStyle Normal"),
-    url("../font/modernaunicase-condensed-medium.otf") format("otf");
+  src: local('EuroStyle Normal'),
+    url('../font/modernaunicase-condensed-medium.otf') format('otf');
 }
 
 :root {
@@ -38,12 +38,18 @@
 }
 
 body {
-  background: url("../img/images/rain_bck.jpeg") no-repeat center center;
+  background: url('../img/images/rain_bck.jpeg') no-repeat center center;
   background-size: cover;
   display: flex;
   align-items: center;
   height: 100vh;
 }
+
+ul {
+  list-style: none;
+}
+
+/* main */
 
 .main {
   display: grid;
@@ -53,8 +59,10 @@ body {
   max-width: 75rem;
   padding: 1.25rem;
   border-radius: 0.5rem;
+  gap: 20px;
 }
 
+/* aside section */
 .aside {
   display: flex;
   flex-direction: column;
@@ -74,7 +82,7 @@ body {
 
 .search .search-input {
   font-size: 1rem;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 400;
   border: 2px solid var(--bg-primary);
   border-right: none !important;
@@ -113,11 +121,12 @@ body {
 
 .day-infor {
   background: var(--gradient-color),
-    url("../img/images/rain_bck.jpeg") center center no-repeat;
+    url('../img/images/rain_bck.jpeg') center center no-repeat;
   background-size: cover;
   color: #fff;
   border-radius: 0.5rem;
   width: 400px;
+  height: 707px;
 }
 
 .day-header {
@@ -125,7 +134,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   padding: 1.25rem;
   text-align: center;
   padding-bottom: 0;
@@ -148,7 +157,7 @@ body {
 .day-header .temp {
   font-size: 6rem;
   font-weight: 700;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin-bottom: 10px;
 }
 
@@ -164,8 +173,8 @@ body {
 }
 
 .day-header .city::before {
-  content: "";
-  background: url("../img/icons/general/local_icon.svg") no-repeat center center;
+  content: '';
+  background: url('../img/icons/general/local_icon.svg') no-repeat center center;
   position: absolute;
   height: 1rem;
   width: 1rem;
@@ -209,15 +218,168 @@ body {
 .day-footer h2 {
   color: var(--primary-color);
   font-weight: 400;
-  font-family: "EuroStyle Normal", Arial, Helvetica, sans-serif;
-  font-size: 1rem;
+  font-family: 'EuroStyle Normal', Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  letter-spacing: 0.1em;
 }
 
 .day-footer p {
-  font-family: "ModernaUnicase Condensed", Arial, Helvetica, sans-serif;
+  font-family: 'ModernaUnicase Condensed', Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 2.5rem;
+}
+
+/* grid section */
+
+.grid-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.hourly-forecast {
+  border-radius: 8px;
+  background: rgba(25, 29, 30, 0.7);
+  grid-area: 1 / 1 / 2 / 3;
+  height: 100%;
+  padding: 20px 20px 0;
+  font-family: 'Poppins';
+}
+
+.hourly-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.hourly-title::before {
+  content: '';
+  background: url('../img/icons/general/clock_icon.svg');
+  height: 16px;
+  width: 16px;
+  display: block;
+}
+
+.forecast-list {
+  display: flex;
+  color: #fff;
+  gap: 40px;
+  overflow-x: scroll;
+  padding-bottom: 20px;
+}
+
+.forecast-list::-webkit-scrollbar {
+  height: 4px;
+}
+
+.forecast-list::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: var(--primary-color);
+}
+
+.forecast-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.forecast-item p {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.forecast-item span {
+  font-size: 32px;
+  font-weight: 500;
+}
+
+/* Day Forecast */
+
+.day-forecast {
+  border-radius: 8px;
+  background: rgba(25, 29, 30, 0.7);
+  grid-area: 2 / 1 / 4 / 2;
+  height: 500px;
+  padding: 20px;
+  font-family: 'Poppins';
+  color: #fff;
+}
+
+.day-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.day-title::before {
+  content: '';
+  background: url('../img/icons/general/clock_icon.svg');
+  height: 16px;
+  width: 16px;
+  display: block;
+}
+.day-forecast-list {
+  gap: 10px;
+  height: 90%;
+  overflow-x: auto;
+  padding-right: 5px;
+}
+
+.day-forecast-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.day-forecast-list::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: var(--primary-color);
+}
+
+.day-forecast-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.day-forecast-infor {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-weight: 500;
+}
+
+.day-forecast-infor h2 {
+  font-size: 16px;
+}
+
+.day-forecast-infor p {
+  font-size: 12px;
+}
+
+.minmax-forecast {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 400;
+  gap: 5px;
 }
