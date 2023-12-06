@@ -120,14 +120,12 @@ function changeCelciusActual(json) {
 function changeLocation(json) {
   const cityFromHtml = document.querySelector('.city');
   const city = json.location.name;
-  cityFromHtml.innerHTML = `${city}`;
-}
-
-function changeCountry(json) {
   const countryFromHtml = document.querySelector('.country');
   const country = json.location.country;
-  countryFromHtml.innerHTML = `${country}`;
+  cityFromHtml.innerHTML = `${city} (${country})`;
 }
+
+function changeCountry(json) {}
 
 function changeMinMax(json) {
   const minFromHtml = document.querySelector('.min');
