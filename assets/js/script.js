@@ -42,6 +42,7 @@ async function handleSubmit(e) {
 // update ui with returns from json
 function updateUI(json) {
   if (json && json.location && json.current) {
+    getLocalTime();
     changeCalendar(json);
     changeCelciusActual(json);
     changeLocation(json);
@@ -120,7 +121,6 @@ function changeCelciusActual(json) {
 function changeLocation(json) {
   const cityFromHtml = document.querySelector('.city');
   const city = json.location.name;
-  const countryFromHtml = document.querySelector('.country');
   const country = json.location.country;
   cityFromHtml.innerHTML = `${city} (${country})`;
 }
@@ -151,16 +151,51 @@ function changeInforFooter(json) {
   const rainFromHtml = document.querySelector('.rain');
   const visibilityFromHtml = document.querySelector('.visibility');
   const humidityFromHtml = document.querySelector('.humidity');
+  const windSpeedFromHtml = document.querySelector('.wind-speed');
+  const gustWindFromHtml = document.querySelector('.gust-wind');
+  const cloudinessFromHtml = document.querySelector('.cloudiness');
 
   const feels = json.current.feelslike_c;
   const rain = json.forecast.forecastday[0].day.daily_chance_of_rain;
   const visibility = json.current.vis_km;
   const humidity = json.current.humidity;
+  const windSpeed = json.current.wind_kph;
+  const gustWind = json.current.gust_kph;
+  const cloudiness = json.current.cloud;
 
   feelsFromHtml.innerHTML = `${feels}° C`;
   rainFromHtml.innerHTML = `${rain}%`;
   visibilityFromHtml.innerHTML = `${visibility} KM/H`;
   humidityFromHtml.innerHTML = `${humidity}%`;
+  windSpeedFromHtml.innerHTML = `${windSpeed} KM/H`;
+  gustWindFromHtml.innerHTML = `${gustWind} KM/H`;
+  cloudinessFromHtml.innerHTML = `${cloudiness}%`;
+}
+
+function getLocalTime() {
+  const localTimeFromHtml = document.querySelector('.time');
+  const localDate = new Date();
+
+  // week days
+  const days = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ];
+
+  let hours = localDate.getHours();
+  let minutes = localDate.getMinutes();
+  const dayOfWeek = days[localDate.getDay()];
+
+  // convert from 24h to 12h
+  const timePeriod = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12 || 12;
+
+  localTimeFromHtml.innerHTML = `Local time: ${dayOfWeek}, ${hours}:${minutes} ${timePeriod}`;
 }
 
 searchForm.addEventListener('submit', handleSubmit);
