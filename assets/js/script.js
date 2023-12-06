@@ -114,7 +114,7 @@ function changeCalendar(json) {
 function changeCelciusActual(json) {
   const tempFromHtml = document.querySelector('.temp');
   const temp = json.current.temp_c;
-  tempFromHtml.innerHTML = `${temp}°`;
+  tempFromHtml.innerHTML = `${temp}° C`;
 }
 
 function changeLocation(json) {
@@ -157,9 +157,9 @@ function changeInforFooter(json) {
   const visibility = json.current.vis_km;
   const humidity = json.current.humidity;
 
-  feelsFromHtml.innerHTML = `${feels}°`;
+  feelsFromHtml.innerHTML = `${feels}° C`;
   rainFromHtml.innerHTML = `${rain}%`;
-  visibilityFromHtml.innerHTML = `${visibility}KM`;
+  visibilityFromHtml.innerHTML = `${visibility} KM/H`;
   humidityFromHtml.innerHTML = `${humidity}%`;
 }
 
