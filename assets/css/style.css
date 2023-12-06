@@ -36,14 +36,17 @@
   margin: 0;
   box-sizing: border-box;
 }
-/* 
+
 body {
-  background: url('../img/images/rain_bck.jpeg') no-repeat center center;
-  background-size: cover;
-} */
+  padding: 1rem;
+}
 
 ul {
   list-style: none;
+}
+
+img {
+  display: block;
 }
 
 /* main */
@@ -54,7 +57,6 @@ ul {
   margin: 0 auto;
   max-width: 880px;
   padding: 1.25rem;
-  margin-top: 2rem;
   border-radius: 0.5rem;
   gap: 20px;
   height: 100vh;
@@ -183,6 +185,7 @@ ul {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin-bottom: 36px;
 }
 
 .day-header .city {
@@ -191,16 +194,21 @@ ul {
 }
 
 .day-header .date {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 500;
 }
 
 .temp-infor {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  text-align: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.temp-infor img {
+  height: 100px;
+  width: 100px;
 }
 
 .day-header .temp {
@@ -222,18 +230,14 @@ ul {
   transform: translateY(-50%);
 } */
 
-.day-header .country {
-  font-size: 1rem;
-  font-weight: 400;
-  margin-bottom: 2.75rem;
-}
-
 .day-header .min-max {
   display: flex;
+  justify-content: flex-start;
+  width: 100%;
   gap: 0.5rem;
   font-weight: 500;
-  font-size: 1rem;
-  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  margin-bottom: 38px;
 }
 
 /* Day Infor footer */

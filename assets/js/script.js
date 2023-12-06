@@ -45,7 +45,7 @@ function updateUI(json) {
     changeCalendar(json);
     changeCelciusActual(json);
     changeLocation(json);
-    changeCountry(json);
+    changeIconDay(json);
     changeMinMax(json);
     changeInforFooter(json);
   } else {
@@ -125,7 +125,15 @@ function changeLocation(json) {
   cityFromHtml.innerHTML = `${city} (${country})`;
 }
 
-function changeCountry(json) {}
+function changeIconDay(json) {
+  const iconDay = document.querySelector('.icon-day');
+  const icon = json.current.condition.icon;
+  const linkDivided = icon.split('/');
+  const linkLength = linkDivided.length;
+  iconDay.src = `./assets/img/icons/${linkDivided[linkLength - 2]}/${
+    linkDivided[linkLength - 1]
+  }`;
+}
 
 function changeMinMax(json) {
   const minFromHtml = document.querySelector('.min');
