@@ -2,7 +2,9 @@ apiKey = 'b25cdbec0d224f2a975190533231611';
 
 const searchForm = document.querySelector('.search');
 
-async function handeFetch() {
+document.querySelector('.loading').style.display = 'flex';
+
+async function handleFetch() {
   try {
     const response = await fetch(
       'https://api.weatherapi.com/v1/forecast.json?key=b25cdbec0d224f2a975190533231611&q=germany&days=7'
@@ -12,14 +14,18 @@ async function handeFetch() {
     updateUI(json);
   } catch (error) {
     console.log(error);
+  } finally {
+    document.querySelector('.loading').style.display = 'none';
   }
 }
 
-handeFetch();
+window.onload = handleFetch;
 
 async function handleSubmit(e) {
   e.preventDefault();
   const inputCity = document.querySelector('#inCity').value;
+
+  document.querySelector('.loading-input').style.display = 'flex';
 
   // if (inputCity.length === 0) {
   //   console.log("Insira uma localização válida");
@@ -33,6 +39,8 @@ async function handleSubmit(e) {
     updateUI(json);
   } catch (error) {
     console.log(error);
+  } finally {
+    document.querySelector('.loading-input').style.display = 'none';
   }
 
   searchForm.reset();
@@ -42,7 +50,6 @@ async function handleSubmit(e) {
 // update ui with returns from json
 function updateUI(json) {
   if (json && json.location && json.current) {
-    getLocalTime();
     changeCalendar(json);
     changeCelciusActual(json);
     changeLocation(json);
@@ -197,5 +204,7 @@ function getLocalTime() {
 
   localTimeFromHtml.innerHTML = `Local time: ${dayOfWeek}, ${hours}:${minutes} ${timePeriod}`;
 }
+
+getLocalTime();
 
 searchForm.addEventListener('submit', handleSubmit);
