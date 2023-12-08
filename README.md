@@ -1,6 +1,4 @@
-<h1 align="center">
-  <a href="[[https://pt-br.reactjs.org/](https://www.weatherapi.com/)](https://yurisouzadev.github.io/weatherApp/)">🔗 WeatherApp</a>
-</h1>
+<a href="[[https://pt-br.reactjs.org/](https://www.weatherapi.com/)](https://yurisouzadev.github.io/weatherApp/)"><h1 align="center">🔗 WeatherApp</h1></a>
 
 <div display="flex">
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
