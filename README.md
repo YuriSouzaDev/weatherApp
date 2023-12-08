@@ -29,6 +29,7 @@
 
 - [x] Fetch working
 - [x] Finish layout
+- [ ] Improve do dinamic create elements with javascript
 - [ ] Search history
 - [ ] Daily forecast
 - [ ] Forecast for the next few days
