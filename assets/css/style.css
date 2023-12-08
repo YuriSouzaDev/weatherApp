@@ -94,15 +94,15 @@ body {
   flex-direction: column;
   margin: 40px auto 105px auto;
   max-width: 880px;
-  margin-top: 40px;
+  padding: 20px;
 }
 
 .header {
   display: grid;
-  grid-template-columns: 1fr 3fr;
-  justify-content: space-between;
+  grid-template-columns: repeat(auto-fit, minmax(271px, 1fr));
+  justify-content: center;
   align-items: flex-end;
-  gap: 24px;
+  gap: 40px 24px;
   margin-bottom: 40px;
 }
 
@@ -133,6 +133,7 @@ body {
   height: 48px;
   font-family: 'Poppins';
   box-shadow: 0px 5px 25px 0px rgba(45, 45, 45, 0.25);
+  width: 100%;
 }
 
 .search .search-input input {
@@ -183,7 +184,6 @@ body {
   justify-content: center;
   font-size: 16px;
   padding: 16px 37px;
-  width: 100%;
   height: 48px;
   border-radius: 5px;
   border: 1px solid #a3a3a3;
@@ -232,7 +232,9 @@ body {
 }
 
 .info-local {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 10px;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -283,7 +285,7 @@ body {
 /* Day Infor footer */
 .day-footer {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   padding: 1.25rem;
   gap: 10px 1.5rem;
   padding-top: 0;
@@ -293,7 +295,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  max-width: 100%;
   padding: 1rem 0;
   color: #000;
   border-bottom: 1px solid #a3a3a3;
@@ -322,11 +324,11 @@ body {
 .footer {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 80px;
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0px -5px 25px 0px rgba(45, 45, 45, 0.25);
   width: 100%;
-  height: 80px;
   padding: 20px;
   position: absolute;
 }
@@ -344,4 +346,24 @@ body {
 
 .footer a:last-child {
   font-size: 1.5rem;
+}
+
+@media (max-width: 500px) {
+  .temp-infor {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .temp-infor h1 {
+    order: 2;
+  }
+
+  .min-max {
+    justify-content: center !important;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 20px;
+  }
 }
