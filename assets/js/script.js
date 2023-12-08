@@ -1,4 +1,4 @@
-apiKey = 'b25cdbec0d224f2a975190533231611';
+apiKey = 'b1e7a6e851154cbda61235725230712';
 
 const searchForm = document.querySelector('.search');
 
@@ -7,10 +7,9 @@ document.querySelector('.loading').style.display = 'flex';
 async function handleFetch() {
   try {
     const response = await fetch(
-      'https://api.weatherapi.com/v1/forecast.json?key=b25cdbec0d224f2a975190533231611&q=germany&days=7'
+      `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=germany&days=7`
     );
     const json = await response.json();
-    console.log(json);
     updateUI(json);
   } catch (error) {
     console.log(error);
@@ -24,27 +23,35 @@ window.onload = handleFetch;
 async function handleSubmit(e) {
   e.preventDefault();
   const inputCity = document.querySelector('#inCity').value;
+  const errorMessage = document.querySelector('.error-msg');
+  const loadingElement = document.querySelector('.loading-input');
 
-  document.querySelector('.loading-input').style.display = 'flex';
+  loadingElement.style.display = 'flex';
 
-  // if (inputCity.length === 0) {
-  //   console.log("Insira uma localização válida");
-  // } else {
-  try {
-    const response = await fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${inputCity}&days=7`
-    );
-    const json = await response.json();
-    console.log(json);
-    updateUI(json);
-  } catch (error) {
-    console.log(error);
-  } finally {
-    document.querySelector('.loading-input').style.display = 'none';
+  if (inputCity.length === 0) {
+    errorMessage.style.display = 'block';
+    errorMessage.innerHTML = 'Enter a valid location';
+  } else {
+    loadingElement.style.display = 'flex';
+    try {
+      const response = await fetch(
+        `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${inputCity}&days=7`
+      );
+      const json = await response.json();
+
+      if (json.error) {
+        throw new Error('No matching location found');
+      }
+      updateUI(json);
+      loadingElement.style.display = 'none';
+      errorMessage.style.display = 'none';
+      searchForm.reset();
+    } catch (error) {
+      errorMessage.innerHTML = 'No matching location found.';
+      errorMessage.style.display = 'block';
+      console.log(error);
+    }
   }
-
-  searchForm.reset();
-  // }
 }
 
 // update ui with returns from json
@@ -56,8 +63,6 @@ function updateUI(json) {
     changeIconDay(json);
     changeMinMax(json);
     changeInforFooter(json);
-  } else {
-    console.log('teste');
   }
 }
 
